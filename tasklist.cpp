@@ -1,35 +1,26 @@
 #include "taskList.h"
-#include <ulog.h>
 #include <SerialTerminal.hpp>
+#include <esp_log.h>
 #include "commands.hpp"
 
 #include "Display_ST77916.h"
 #include "LVGL_Driver.h"
 #include "LVGL_Example.h"
 
-/*-------------------- ulog --------------------*/
-unsigned long get_timestamp()
-{
-    return millis();
-}
-
-void my_console_logger(ulog_level_t severity, char *msg)
-{
-    Serial.printf("%lu [%s]: %s\r\n",
-                  get_timestamp(), // user defined function
-                  ulog_level_name(severity),
-                  msg);
-}
-
+#include "SD_Card.h"
 /*-------------------- init --------------------*/
 void TaskList::init()
 {
     this->terminal_init();
-    ULOG_INIT();
-    ULOG_SUBSCRIBE(my_console_logger, ULOG_TRACE_LEVEL);
-    ULOG_INFO("ULOG init.");
     this->lvgl_init();
-    ULOG_INFO("System init success.");
+    this->sdcard_init();
+    ESP_LOGI("", "System init success.");
+}
+
+/*-------------------- TF Card --------------------*/
+void TaskList::sdcard_init()
+{
+    SD_Init();
 }
 
 /*-------------------- LVGL --------------------*/
@@ -47,9 +38,9 @@ void LVGL_Task(void *parameter)
 
 void TaskList::lvgl_init()
 {
-    ULOG_INFO("LVGL Init.");
+    ESP_LOGI("", "LVGL Init.");
     Backlight_Init();
-    Set_Backlight(70);  //0~100
+    Set_Backlight(70); // 0~100
     LCD_Init();
     Lvgl_Init();
     // 创建任务
@@ -83,7 +74,7 @@ void TaskList::terminal_init()
     this->term = new maschinendeck::SerialTerminal(115200);
     if (this->term == NULL)
     {
-        ULOG_ERROR("MEM IS FULL.");
+        ESP_LOGE("", "MEM IS FULL.");
         return;
     }
     term_global = this->term;

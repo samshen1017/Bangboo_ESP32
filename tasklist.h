@@ -14,4 +14,5 @@ private:
   maschinendeck::SerialTerminal *term;
   void terminal_init();
   void lvgl_init();
+  void sdcard_init();
 };
