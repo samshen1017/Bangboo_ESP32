@@ -3,22 +3,25 @@
 #include <esp_log.h>
 #include "commands.hpp"
 
+#include "Audio_PCM5101.h"
+
 #include "Display_ST77916.h"
 #include "LVGL_Driver.h"
 #include "LVGL_Example.h"
 
 #include "SD_Card.h"
 /*-------------------- init --------------------*/
-void TaskList::init()
+void TaskList::init(void)
 {
     this->terminal_init();
     this->lvgl_init();
     this->sdcard_init();
+    this->audio_init();
     ESP_LOGI("", "System init success.");
 }
 
 /*-------------------- TF Card --------------------*/
-void TaskList::sdcard_init()
+void TaskList::sdcard_init(void)
 {
     SD_Init();
 }
@@ -36,7 +39,7 @@ void LVGL_Task(void *parameter)
     }
 }
 
-void TaskList::lvgl_init()
+void TaskList::lvgl_init(void)
 {
     ESP_LOGI("", "LVGL Init.");
     Backlight_Init();
@@ -55,6 +58,13 @@ void TaskList::lvgl_init()
     );
 }
 
+/*-------------------- Audio --------------------*/
+void TaskList::audio_init(void)
+{
+    ESP_LOGI("", "Audio Init.");
+    Audio_Init();
+}
+
 /*-------------------- SerialTerminal --------------------*/
 
 maschinendeck::SerialTerminal *term_global;
@@ -69,7 +79,7 @@ void TerminalTask(void *parameter)
     }
 }
 
-void TaskList::terminal_init()
+void TaskList::terminal_init(void)
 {
     this->term = new maschinendeck::SerialTerminal(115200);
     if (this->term == NULL)

@@ -1,6 +1,5 @@
 #pragma once
 #include <SerialTerminal.hpp>
-#include "SD_Card.h"
 
 extern maschinendeck::SerialTerminal *term_global;
 
@@ -29,6 +28,7 @@ void querymem(String opts)
 }
 
 /* ====================== FS Port ====================== */
+#include "SD_Card.h"
 static String current_path = "/";
 
 void cd(String opts)
@@ -124,10 +124,33 @@ void rm(String opts)
     deleteFile(SD, path.c_str());
 }
 
+/* ====================== Audio Test ====================== */
+#include "Audio_PCM5101.h"
+void audio_play(String opts)
+{
+    maschinendeck::Pair<String, String> operands = maschinendeck::SerialTerminal::ParseCommand(opts);
+    Audio_PlayByFS(operands.first());
+}
+
+void audio_setVolume(String opts)
+{
+    maschinendeck::Pair<String, String> operands = maschinendeck::SerialTerminal::ParseCommand(opts);
+    uint8_t vol = operands.first().toInt();
+    Audio_setVolume(vol);
+}
+
+void audio_state(String opts)
+{
+    maschinendeck::Pair<String, String> operands = maschinendeck::SerialTerminal::ParseCommand(opts);
+    printf("Volume: %u\r\n", Audio_Volume());
+    printf("VUlevel: %u\r\n", Audio_VUlevel());
+}
+
 void commands_init()
 {
     term_global->add("hello", &hello, "HelloWorld");
     term_global->add("querymem", &querymem, "query memory");
+    /*===================== FS Port =====================*/
     term_global->add("cd", &cd, "cd");
     term_global->add("ls", &ls, "ls");
     term_global->add("mkdir", &mkdir, "mkdir");
@@ -136,4 +159,8 @@ void commands_init()
     term_global->add("touch", &touch, "touch");
     term_global->add("mv", &mv, "mv");
     term_global->add("rm", &rm, "rm");
+    /*===================== Audio =====================*/
+    term_global->add("audio-p", &audio_play, "Audio play MP3");
+    term_global->add("audio-s", &audio_state, "Audio state");
+    term_global->add("audio-vol", &audio_setVolume, "Audio set Volume");
 }

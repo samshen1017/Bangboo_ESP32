@@ -6,13 +6,14 @@
 class TaskList
 {
 public:
-  void init();
+  void init(void);
 
 private:
   TaskHandle_t term_xHandle;
   TaskHandle_t lvgl_xHandle;
   maschinendeck::SerialTerminal *term;
-  void terminal_init();
-  void lvgl_init();
-  void sdcard_init();
+  void terminal_init(void);
+  void lvgl_init(void);
+  void sdcard_init(void);
+  void audio_init(void);
 };
