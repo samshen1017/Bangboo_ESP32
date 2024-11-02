@@ -16,4 +16,5 @@ private:
   void lvgl_init(void);
   void sdcard_init(void);
   void audio_init(void);
+  void mic_init(void);
 };

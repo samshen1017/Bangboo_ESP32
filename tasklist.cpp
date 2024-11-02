@@ -5,6 +5,8 @@
 
 #include "Audio_PCM5101.h"
 
+#include "MIC_MSM.h"
+
 #include "Display_ST77916.h"
 #include "LVGL_Driver.h"
 #include "LVGL_Example.h"
@@ -17,6 +19,7 @@ void TaskList::init(void)
     this->lvgl_init();
     this->sdcard_init();
     this->audio_init();
+    this->mic_init();
     ESP_LOGI("", "System init success.");
 }
 
@@ -52,7 +55,7 @@ void TaskList::lvgl_init(void)
         "LVGL_Task",         // 任务名称
         10240,               // 栈大小（字节）
         NULL,                // 传递给任务函数的参数
-        3,                   // 优先级（数字越高优先级越高）
+        5,                   // 优先级（数字越高优先级越高）
         &this->lvgl_xHandle, // 任务句柄
         0                    // 核心编号（0或1）
     );
@@ -63,6 +66,14 @@ void TaskList::audio_init(void)
 {
     ESP_LOGI("", "Audio Init.");
     Audio_Init();
+}
+
+/*-------------------- MIC --------------------*/
+
+void TaskList::mic_init(void)
+{
+    ESP_LOGI("", "MIC Init.");
+    MIC_Init();
 }
 
 /*-------------------- SerialTerminal --------------------*/
@@ -95,7 +106,7 @@ void TaskList::terminal_init(void)
         "TerminalTask",      // 任务名称
         8192,                // 栈大小（字节）
         NULL,                // 传递给任务函数的参数
-        3,                   // 优先级（数字越高优先级越高）
+        5,                   // 优先级（数字越高优先级越高）
         &this->term_xHandle, // 任务句柄
         0                    // 核心编号（0或1）
     );

@@ -146,6 +146,21 @@ void audio_state(String opts)
     printf("VUlevel: %u\r\n", Audio_VUlevel());
 }
 
+/* ====================== MIC Test ====================== */
+#include "MIC_MSM.h"
+void mic_record(String opts)
+{
+    maschinendeck::Pair<String, String> operands = maschinendeck::SerialTerminal::ParseCommand(opts);
+    MIC_RecordStart();
+}
+
+void mic_setState(String opts)
+{
+    maschinendeck::Pair<String, String> operands = maschinendeck::SerialTerminal::ParseCommand(opts);
+    uint8_t state = operands.first().toInt();
+    MIC_ForceChangeState(state);
+}
+
 void commands_init()
 {
     term_global->add("hello", &hello, "HelloWorld");
@@ -163,4 +178,7 @@ void commands_init()
     term_global->add("audio-p", &audio_play, "Audio play MP3");
     term_global->add("audio-s", &audio_state, "Audio state");
     term_global->add("audio-vol", &audio_setVolume, "Audio set Volume");
+    /*===================== MIC Test =====================*/
+    term_global->add("mic_record", &mic_record, "Record wav file");
+    term_global->add("mic_s", &mic_setState, "Record force change state");
 }

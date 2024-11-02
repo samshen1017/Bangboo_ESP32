@@ -163,20 +163,54 @@ void readFile(fs::FS &fs, const char *path)
   file.close();
 }
 
-void writeFile(fs::FS &fs, const char *path, const char *message) {
+void writeFile(fs::FS &fs, const char *path, const char *message)
+{
   Serial.printf("Writing file: %s\r\n", path);
 
   File file = fs.open(path, FILE_WRITE);
-  if (!file) {
+  if (!file)
+  {
     Serial.println("Failed to open file for writing");
     return;
   }
-  if (file.print(message)) {
+  if (file.print(message))
+  {
     Serial.println("File written");
-  } else {
+  }
+  else
+  {
     Serial.println("Write failed");
   }
   file.close();
+}
+
+#define WriteBufSize 4096
+uint32_t writeRawFile(fs::FS &fs, const char *path, uint8_t *raw, size_t length)
+{
+  Serial.printf("Writing file: %s\r\n", path);
+  uint32_t written = 0;
+  for (int i = 0; i < length; i += WriteBufSize)
+  {
+    File file = fs.open(path, FILE_WRITE);
+    if (!file)
+    {
+      Serial.println("Failed to open file for writing");
+      return 0;
+    }
+    file.seek(i);
+    if (i + WriteBufSize > length)
+    {
+      // last once
+      written += file.write(raw + i, length - i);
+    }
+    else
+    {
+      written += file.write(raw + i, WriteBufSize);
+    }
+    file.flush();
+    file.close();
+  }
+  return written;
 }
 
 void renameFile(fs::FS &fs, const char *path1, const char *path2)
