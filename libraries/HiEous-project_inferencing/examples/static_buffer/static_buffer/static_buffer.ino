@@ -15,7 +15,7 @@
  */
 
 /* Includes ---------------------------------------------------------------- */
-#include <HiEous-project_inferencing.h>
+#include <project_549557_inferencing.h>
 
 static const float features[] = {
     // copy raw features here (for example from the 'Live classification' page)

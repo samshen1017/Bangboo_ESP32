@@ -33,7 +33,7 @@
  */
 
 /* Includes ---------------------------------------------------------------- */
-#include <HiEous-project_inferencing.h>
+#include <project_549557_inferencing.h>
 #include <PDM.h>
 
 /** Audio buffers, pointers and selectors */

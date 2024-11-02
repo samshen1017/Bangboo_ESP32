@@ -15,7 +15,7 @@
  */
 
 /* Includes ---------------------------------------------------------------- */
-#include <HiEous-project_inferencing.h>
+#include <project_549557_inferencing.h>
 #include <Arduino_LSM9DS1.h> //Click here to get the library: https://www.arduino.cc/reference/en/libraries/arduino_lsm9ds1/
 #include <Arduino_LPS22HB.h> //Click here to get the library: https://www.arduino.cc/reference/en/libraries/arduino_lps22hb/
 #include <Arduino_HTS221.h> //Click here to get the library: https://www.arduino.cc/reference/en/libraries/arduino_hts221/

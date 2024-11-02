@@ -8,6 +8,7 @@ struct MIC_Recorder
 {
   bool start = false;
   uint8_t state = Record_Standby;
+  uint32_t seconds; //需要录制的总时长
   uint8_t *wav_buffer;
   size_t wav_size;
 };
@@ -35,14 +36,13 @@ void MICTask(void *parameter)
         recorder.state = Record_Busy;
         recorder.start = false;
         // Record 5 seconds of audio data
-        recorder.wav_buffer = i2s.recordWAV(5, &recorder.wav_size);
+        recorder.wav_buffer = i2s.recordWAV(recorder.seconds, &recorder.wav_size);
       }
       break;
     case Record_Busy:
     {
-      printf("wav_buffer addr: %p\r\n", recorder.wav_buffer);
       uint32_t w_size = writeRawFile(SD, "/record/test.wav", recorder.wav_buffer, recorder.wav_size);
-      printf("w_size: %d\r\n", w_size);
+      printf("w_size: %d, wav_size: %d\r\n", w_size, recorder.wav_size);
       recorder.state = Record_Finish;
       break;
     }
@@ -76,10 +76,11 @@ void MIC_Init(void)
       1);
 }
 
-void MIC_RecordStart(void)
+void MIC_RecordStart(uint32_t seconds)
 {
   if (recorder.state == Record_Standby)
   {
+    recorder.seconds = seconds;
     recorder.start = true;
   }
 }

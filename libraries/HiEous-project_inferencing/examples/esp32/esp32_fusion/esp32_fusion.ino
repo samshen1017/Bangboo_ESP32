@@ -24,7 +24,7 @@
 // https://github.com/espressif/arduino-esp32/releases/tag/2.0.4
 
 /* Includes ---------------------------------------------------------------- */
-#include <HiEous-project_inferencing.h>
+#include <project_549557_inferencing.h>
 #include <LIS3DHTR.h> //Click here to get the library: http://librarymanager/All#LIS3DHTR
 #include <Wire.h>
 

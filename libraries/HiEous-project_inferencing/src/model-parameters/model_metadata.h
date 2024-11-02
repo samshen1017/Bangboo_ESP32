@@ -70,12 +70,12 @@
 #define EI_CLASSIFIER_DATATYPE_UINT8             3
 #define EI_CLASSIFIER_DATATYPE_INT8              9
 
-#define EI_CLASSIFIER_PROJECT_ID                 548233
+#define EI_CLASSIFIER_PROJECT_ID                 549557
 #define EI_CLASSIFIER_PROJECT_OWNER              "Quan Shen"
-#define EI_CLASSIFIER_PROJECT_NAME               "HiEous-project"
-#define EI_CLASSIFIER_PROJECT_DEPLOY_VERSION     10
-#define EI_CLASSIFIER_NN_INPUT_FRAME_SIZE        1027
-#define EI_CLASSIFIER_RAW_SAMPLE_COUNT           25600
+#define EI_CLASSIFIER_PROJECT_NAME               "你好伊埃斯"
+#define EI_CLASSIFIER_PROJECT_DEPLOY_VERSION     2
+#define EI_CLASSIFIER_NN_INPUT_FRAME_SIZE        611
+#define EI_CLASSIFIER_RAW_SAMPLE_COUNT           24000
 #define EI_CLASSIFIER_RAW_SAMPLES_PER_FRAME      1
 #define EI_CLASSIFIER_DSP_INPUT_FRAME_SIZE       (EI_CLASSIFIER_RAW_SAMPLE_COUNT * EI_CLASSIFIER_RAW_SAMPLES_PER_FRAME)
 #define EI_CLASSIFIER_INPUT_WIDTH                0
@@ -114,8 +114,8 @@
 #define EI_CLASSIFIER_LOAD_FFT_32                1
 #define EI_CLASSIFIER_LOAD_FFT_64                0
 #define EI_CLASSIFIER_LOAD_FFT_128               0
-#define EI_CLASSIFIER_LOAD_FFT_256               0
-#define EI_CLASSIFIER_LOAD_FFT_512               1
+#define EI_CLASSIFIER_LOAD_FFT_256               1
+#define EI_CLASSIFIER_LOAD_FFT_512               0
 #define EI_CLASSIFIER_LOAD_FFT_1024              0
 #define EI_CLASSIFIER_LOAD_FFT_2048              0
 #define EI_CLASSIFIER_LOAD_FFT_4096              0

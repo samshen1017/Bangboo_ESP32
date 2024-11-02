@@ -34,7 +34,7 @@
 
 /* Includes ---------------------------------------------------------------- */
 #include <PDM.h>
-#include <HiEous-project_inferencing.h>
+#include <project_549557_inferencing.h>
 
 /** Audio buffers, pointers and selectors */
 typedef struct {

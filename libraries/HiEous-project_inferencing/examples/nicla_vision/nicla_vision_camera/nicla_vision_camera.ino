@@ -15,7 +15,7 @@
  */
 
 /* Includes ---------------------------------------------------------------- */
-#include <HiEous-project_inferencing.h>
+#include <project_549557_inferencing.h>
 
 #include "edge-impulse-sdk/dsp/image/image.hpp"
 

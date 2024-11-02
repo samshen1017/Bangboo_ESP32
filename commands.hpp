@@ -27,6 +27,13 @@ void querymem(String opts)
     Serial.printf("Total heap: %lu bytes\r\n", Totalheap);
 }
 
+void help(String opts)
+{
+    maschinendeck::Pair<String, String> operands = maschinendeck::SerialTerminal::ParseCommand(opts);
+    Serial.println("  available commands:");
+    term_global->printCommands();
+}
+
 /* ====================== FS Port ====================== */
 #include "SD_Card.h"
 static String current_path = "/";
@@ -151,7 +158,8 @@ void audio_state(String opts)
 void mic_record(String opts)
 {
     maschinendeck::Pair<String, String> operands = maschinendeck::SerialTerminal::ParseCommand(opts);
-    MIC_RecordStart();
+    uint32_t seconds = operands.first().toInt();
+    MIC_RecordStart(seconds);
 }
 
 void mic_setState(String opts)
@@ -161,10 +169,12 @@ void mic_setState(String opts)
     MIC_ForceChangeState(state);
 }
 
+/* ====================== Commands Init ====================== */
 void commands_init()
 {
     term_global->add("hello", &hello, "HelloWorld");
-    term_global->add("querymem", &querymem, "query memory");
+    term_global->add("query", &querymem, "query memory");
+    term_global->add("help", &help, "list all commands");
     /*===================== FS Port =====================*/
     term_global->add("cd", &cd, "cd");
     term_global->add("ls", &ls, "ls");
@@ -175,10 +185,10 @@ void commands_init()
     term_global->add("mv", &mv, "mv");
     term_global->add("rm", &rm, "rm");
     /*===================== Audio =====================*/
-    term_global->add("audio-p", &audio_play, "Audio play MP3");
-    term_global->add("audio-s", &audio_state, "Audio state");
-    term_global->add("audio-vol", &audio_setVolume, "Audio set Volume");
+    term_global->add("audio-play", &audio_play, "Audio play MP3");
+    term_global->add("audio-state", &audio_state, "Audio state");
+    term_global->add("audio-setvolume", &audio_setVolume, "Audio set Volume");
     /*===================== MIC Test =====================*/
-    term_global->add("mic_record", &mic_record, "Record wav file");
-    term_global->add("mic_s", &mic_setState, "Record force change state");
+    term_global->add("mic-record", &mic_record, "Record wav file");
+    term_global->add("mic-setsate", &mic_setState, "Record force change state");
 }

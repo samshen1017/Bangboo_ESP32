@@ -18,6 +18,7 @@
 #ifndef _EIDSP_NUMPY_TYPES_H_
 #define _EIDSP_NUMPY_TYPES_H_
 
+#include <Arduino.h>
 #include <stdint.h>
 #include <stdbool.h>
 #include <string.h>

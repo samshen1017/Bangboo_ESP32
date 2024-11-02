@@ -28,7 +28,7 @@
  * either express or implied. See the License for the specific language governing
  * permissions, disclaimers and limitations under the License.
  */
-// Generated on: 02.11.2024 04:58:16
+// Generated on: 02.11.2024 18:55:18
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -85,9 +85,9 @@ using namespace tflite::ops::micro;
 namespace {
 
 #if defined(EI_CLASSIFIER_ALLOCATION_STATIC_HIMAX) || defined(EI_CLASSIFIER_ALLOCATION_STATIC_HIMAX_GNU)
-constexpr int kTensorArenaSize = 3952;
+constexpr int kTensorArenaSize = 3120;
 #else
-constexpr int kTensorArenaSize = 2928;
+constexpr int kTensorArenaSize = 2096;
 #endif
 
 #if defined(EI_CLASSIFIER_ALLOCATION_STATIC)
@@ -147,119 +147,119 @@ static TfLiteEvalTensorWithIndex tflEvalTensors[MAX_TFL_EVAL_COUNT];
 TfLiteRegistration registrations[OP_LAST];
 
 namespace g0 {
-const TfArray<2, int> tensor_dimension0 = { 2, { 1,1027 } };
-const TfArray<1, float> quant0_scale = { 1, { 0.043144300580024719, } };
-const TfArray<1, int> quant0_zero = { 1, { -39 } };
+const TfArray<2, int> tensor_dimension0 = { 2, { 1,611 } };
+const TfArray<1, float> quant0_scale = { 1, { 0.035951398313045502, } };
+const TfArray<1, int> quant0_zero = { 1, { 31 } };
 const TfLiteAffineQuantization quant0 = { (TfLiteFloatArray*)&quant0_scale, (TfLiteIntArray*)&quant0_zero, 0 };
-const ALIGN(16) int32_t tensor_data1[4] = { 1, 1, 79, 13, };
+const ALIGN(16) int32_t tensor_data1[4] = { 1, 1, 47, 13, };
 const TfArray<1, int> tensor_dimension1 = { 1, { 4 } };
-const ALIGN(16) int32_t tensor_data2[4] = { 1, 79, 1, 8, };
+const ALIGN(16) int32_t tensor_data2[4] = { 1, 47, 1, 8, };
 const TfArray<1, int> tensor_dimension2 = { 1, { 4 } };
-const ALIGN(16) int32_t tensor_data3[4] = { 1, 1, 40, 8, };
+const ALIGN(16) int32_t tensor_data3[4] = { 1, 1, 24, 8, };
 const TfArray<1, int> tensor_dimension3 = { 1, { 4 } };
-const ALIGN(16) int32_t tensor_data4[4] = { 1, 40, 1, 16, };
+const ALIGN(16) int32_t tensor_data4[4] = { 1, 24, 1, 16, };
 const TfArray<1, int> tensor_dimension4 = { 1, { 4 } };
-const ALIGN(8) int32_t tensor_data5[2] = { -1, 320, };
+const ALIGN(8) int32_t tensor_data5[2] = { -1, 192, };
 const TfArray<1, int> tensor_dimension5 = { 1, { 2 } };
-const ALIGN(8) int32_t tensor_data6[3] = { -126, -470, 704, };
+const ALIGN(8) int32_t tensor_data6[3] = { -433, 459, -39, };
 const TfArray<1, int> tensor_dimension6 = { 1, { 3 } };
-const TfArray<1, float> quant6_scale = { 1, { 6.3003775721881539e-05, } };
+const TfArray<1, float> quant6_scale = { 1, { 6.4817024394869804e-05, } };
 const TfArray<1, int> quant6_zero = { 1, { 0 } };
 const TfLiteAffineQuantization quant6 = { (TfLiteFloatArray*)&quant6_scale, (TfLiteIntArray*)&quant6_zero, 0 };
-const ALIGN(16) int8_t tensor_data7[3*320] = { 
-  1, -23, 13, -55, -39, 0, 33, -48, -69, 20, 41, -18, 38, -27, 15, -13, -20, -58, 2, 3, -29, 30, 43, -2, -45, -29, 49, -13, -37, -42, 11, -71, 19, -17, -55, -31, 21, -63, -9, 24, -51, -30, 26, -36, 51, 34, 44, -51, 21, 26, -16, -47, 8, -55, 26, 12, 2, -59, 38, -53, -15, 41, 2, 11, 28, -3, -7, 18, 10, -1, 24, -19, -48, 2, -85, -41, -22, 60, 27, 62, -16, -54, 31, 19, 28, -12, 37, -5, -33, 21, 20, -25, 1, 29, 40, -18, -20, -17, 28, 33, -11, 47, -37, 3, -7, -50, 22, 21, 7, 44, -21, -6, -26, 33, 3, -49, 1, 18, -86, 5, 10, -42, 21, -71, -33, -21, -7, -60, -27, -40, -47, 18, 44, -48, -43, -9, 24, -83, -41, -21, -39, 26, -26, -68, -48, 15, -38, 8, 8, -18, 35, -22, -25, -58, -28, 1, 14, 7, 40, -18, 31, -40, -32, 37, -26, 20, 36, -18, -4, -1, 12, 24, 7, 13, 45, 24, -19, -35, 22, 42, -8, -28, 11, -21, -3, 23, 27, 15, -45, -13, 20, -6, 11, 23, -19, 24, 18, 17, -7, 15, -10, 39, 65, 26, 30, -24, 11, 2, 11, -47, -6, 29, 76, -40, -7, -7, 31, 9, 34, 8, 14, 21, 24, 39, -21, 22, 1, 30, 31, -34, 43, 1, 40, 36, -24, -14, -20, 53, -7, 25, -7, 21, -55, -15, 71, -33, -25, 24, 6, 18, 12, 63, 44, 4, -39, 9, -23, -27, 5, 42, 4, -33, -21, -14, -47, 50, 53, 30, 41, -27, -22, 10, -44, -46, -6, 32, -30, -15, 2, -33, -35, -32, -7, -29, 20, 47, -50, -46, -46, 10, 6, -35, -63, -28, -32, 12, 2, -32, 7, 23, 10, 34, 11, -46, -60, -29, 12, 4, -75, 10, -15, 18, -32, 12, -10, -19, 2, 60, -19, -25, 
-  56, 49, 35, 12, -68, 13, 40, -12, 56, 23, 16, 34, -19, -11, -2, 59, 54, 65, -14, 9, 46, 4, 45, -1, 39, 34, 12, 26, -19, -61, 32, -1, 62, 44, -14, -49, 28, -50, 20, 18, 21, 12, -127, -50, -51, -64, 9, 12, 22, -19, -37, -18, -7, -7, -5, -11, -14, 26, -75, -5, 25, -21, -7, -43, 31, 46, 13, 21, -10, 19, 9, 6, 1, 20, 19, 82, 26, -24, -38, -60, -4, 14, 8, -29, 9, 15, -14, 41, 32, 23, -39, 6, -12, 19, -24, 0, -6, -1, 31, 21, -49, -29, -44, -7, 4, 4, -56, 31, -29, -59, -32, 20, -19, 11, 24, 32, 51, 9, 16, 37, -3, 49, -74, -33, 1, -51, -18, -62, -16, 38, -18, -1, -30, -19, -46, -34, -25, 6, -20, 20, 27, -92, -2, -22, -9, 11, 32, 9, -14, 19, 1, -32, -29, 28, 3, 4, -24, -20, -29, -4, 0, 43, 2, 30, 2, -14, -14, -16, -18, 15, -66, 28, 23, -69, -1, -27, 12, -5, 10, 5, -33, 7, -9, -1, -3, -24, -33, -52, -38, -19, -34, 46, 3, -13, -10, -24, 21, -40, 8, 43, -34, -38, -35, -36, -29, -30, 33, -35, 22, -20, -33, -26, -39, -33, -83, -7, -2, 23, -62, -7, -29, -18, -43, -9, -22, 15, -11, -10, 8, -29, 0, -24, 16, -19, -53, -8, 55, -38, 35, -48, 23, 19, 24, 25, -39, 8, 20, 39, -26, -45, -19, 53, 35, -3, -27, -69, 41, -7, -13, -64, -36, -33, 14, 33, 34, 18, -79, 27, -26, -37, 34, 20, 37, 22, -30, -47, 16, -36, 5, -41, 7, 48, -57, -29, -5, -14, 18, -86, 35, -22, 36, -33, -68, -21, -6, 19, 6, -38, -26, -53, -20, -101, -5, -2, 37, 32, -48, -80, 52, -39, 0, -15, 24, 39, -33, 31, -10, -94, -16, 25, 
-  -50, -15, 3, -36, -1, -24, -65, -28, -5, -29, -3, -50, -19, 51, -15, -25, -26, -30, -9, 43, 9, 16, -20, -41, -68, -2, 17, 11, 41, 47, 5, 5, -75, 0, 34, 49, 10, 49, -35, 18, 12, -55, 56, 85, 18, -3, -53, 3, -31, -29, 2, 20, 19, 11, -67, 19, 14, 12, 47, 23, 15, -43, -61, -3, 4, 20, -6, 0, -20, -22, -6, 17, -28, -18, -30, 19, 13, -4, -33, -66, -38, 8, 20, -43, -15, -39, -47, -15, 9, 32, -52, 8, 10, 31, -29, 0, -31, -18, -23, 22, 0, 28, 30, 19, 52, -35, -37, -49, -9, -4, 45, 52, 6, -56, 38, -31, -32, 31, 85, -9, 48, -48, 29, 0, -24, 32, 22, 5, 61, 7, 21, 8, 18, 10, 79, -18, -18, 15, 2, 24, 76, 18, 34, 35, 9, -14, 49, 44, 21, -2, 44, -30, 14, 52, 35, -17, -16, -55, -6, 21, 40, 2, -12, 0, 13, 4, -2, 5, 23, -38, -11, -18, 0, -8, -37, 10, 24, -26, 38, -4, 8, -7, 13, 52, -14, 9, 1, 13, 44, 51, 44, -1, 40, -2, 13, 0, 60, 31, 26, 52, 31, 17, -20, -9, 17, 28, -38, 16, -36, -19, 11, 3, -42, 62, 3, -28, 13, -12, -21, 3, 34, 15, 16, -11, -42, -14, 39, 10, -57, 46, -40, -45, 53, -11, 92, 71, -26, -20, -70, 11, -33, 46, -18, 12, -15, -18, 10, -33, 22, 14, 24, -21, -13, -9, 7, 42, -12, 14, 21, 44, -16, 23, -33, 28, -25, 0, -39, 7, -38, -17, -7, -28, -26, 30, 49, -17, 16, 1, -14, -36, -6, -28, 53, 12, -20, -38, -46, 101, -34, 28, -15, -7, 16, -43, 2, 24, -6, -23, 11, -50, -23, 73, -29, 84, 24, -14, 2, 44, -51, 66, 22, 13, 50, -23, -21, -43, -52, 3, 16, 38, 
+const ALIGN(16) int8_t tensor_data7[3*192] = { 
+  25, -4, 39, -23, -59, 20, 84, -41, -31, 34, 67, -6, -10, -90, 35, -33, -9, -52, -27, -28, -37, 49, 81, -8, -24, -37, 93, -7, -25, -63, 27, -124, 43, -12, -76, -75, 28, -37, -43, 31, -66, -73, 12, -16, 70, -3, 33, -89, 35, 14, -84, -100, 3, -12, 4, 26, 7, -56, 62, -56, 6, 60, 5, -88, 43, -13, -15, 41, -99, 17, -9, -34, -47, -21, 17, 39, -6, 27, 36, -4, 21, -41, 22, -49, 62, -5, 37, -7, -28, 52, 47, -16, 44, 20, 62, -88, 42, 8, 23, -21, -43, 59, 0, 38, -9, -58, 29, -30, 57, 70, 20, -53, 42, 44, -7, -75, 5, 28, -15, 44, 33, -45, 42, -23, -21, 10, 75, -57, 48, -7, -51, 25, 9, -46, 0, -22, 55, -53, 26, 2, 21, -10, 43, -83, 12, 33, -43, -3, 68, -8, 39, -19, -11, -65, -31, -7, 38, -77, 74, -67, 56, -29, -35, 29, -32, 0, 16, 4, 14, -10, -25, 15, 18, -22, 67, -35, -35, -37, 29, 54, -28, -59, -3, 7, 15, 39, -2, 33, -74, -72, 50, -35, 
+  25, 70, 8, -34, 6, 31, -8, -36, 31, 27, -31, 49, 5, 14, -17, 69, 43, 23, -46, 6, 66, 8, -56, -18, -24, -4, 25, 19, -7, -15, 55, -46, 36, 43, -27, -40, 77, -57, -80, 25, 3, -5, -4, -42, -37, 5, -21, 35, 11, 29, 3, 14, 24, -22, -39, 7, -18, 22, -39, -44, 15, 35, -51, 47, -10, 56, 20, 18, 108, 6, 39, 24, -10, 56, -56, 18, 0, -7, -72, -14, -59, -9, 15, -8, 34, 37, -20, 31, 51, 8, -51, 69, -51, 24, -36, 38, -43, 2, 25, 50, 1, 6, -57, -37, 25, -17, -60, 29, -30, -6, -55, 72, -29, 0, 39, 43, 13, 31, -6, 1, -39, 22, -127, -103, 28, 33, -33, -10, -20, 34, 15, 22, -22, -4, -19, -19, -38, -26, -57, -2, 34, -18, 43, 67, -37, 25, 74, 57, -82, 27, 50, -36, -9, 21, -41, 19, -85, -25, -15, 77, 3, 22, -13, 47, -21, -11, 25, -44, -41, 14, -81, 19, -14, -78, 14, 17, 10, -3, 26, 55, 24, 74, 62, -14, 48, 57, 58, -43, -35, 3, -62, 62, 
+  -33, -46, 41, -34, -93, -66, -96, -37, 9, -18, 25, -90, -2, 70, -14, -3, -30, 19, 44, 82, -33, 21, 58, -35, -40, 44, -46, 28, 11, 8, -39, 53, -91, -6, 57, 76, -49, 21, 70, 28, 42, -36, -39, 85, 8, -54, -22, 6, -26, -84, 13, 11, -8, -39, -25, -13, 26, 19, 7, 50, 10, -118, -32, -9, 61, 36, 2, 12, -57, -26, -6, 10, -36, -39, -43, 37, 39, 78, -23, -44, -37, 3, 52, -24, -74, -76, -37, 10, -17, 40, -84, -41, 14, 60, -33, 27, -86, -52, 8, 55, -57, 15, 1, 9, 54, -12, -88, -18, -66, -59, 17, 64, -95, -60, 58, -36, -12, 25, 53, 1, 63, -27, 60, -2, -75, -75, -96, -78, -20, -12, -26, -24, 50, -29, 26, -43, -45, -7, -15, 23, 41, -15, -56, -55, -36, -37, 34, 23, 49, -17, 12, -52, -34, 52, 75, -33, 0, 41, -66, -7, 29, 31, 7, -11, 27, 29, 19, -8, 22, -33, 20, 22, 17, 21, -64, 38, 55, -55, 19, -63, -22, -44, -11, 37, -76, -81, -56, -16, 53, 76, 51, 23, 
 };
-const TfArray<2, int> tensor_dimension7 = { 2, { 3,320 } };
-const TfArray<1, float> quant7_scale = { 1, { 0.0031983258668333292, } };
+const TfArray<2, int> tensor_dimension7 = { 2, { 3,192 } };
+const TfArray<1, float> quant7_scale = { 1, { 0.0030574782285839319, } };
 const TfArray<1, int> quant7_zero = { 1, { 0 } };
 const TfLiteAffineQuantization quant7 = { (TfLiteFloatArray*)&quant7_scale, (TfLiteIntArray*)&quant7_zero, 0 };
-const ALIGN(16) int32_t tensor_data8[16] = { -1159, -514, -332, 659, 118, -101, -139, -905, 516, -291, 1742, 823, 492, 1930, -363, 458, };
+const ALIGN(16) int32_t tensor_data8[16] = { -893, -228, -155, 504, 1434, -322, 55, -1544, -1341, 754, 644, 11, -1177, 1369, -399, 1145, };
 const TfArray<1, int> tensor_dimension8 = { 1, { 16 } };
-const TfArray<16, float> quant8_scale = { 16, { 7.4760537245310843e-05, 6.8784553150180727e-05, 6.8049019319005311e-05, 6.2477469327859581e-05, 5.5577798775630072e-05, 6.9026231358293444e-05, 6.5999032813124359e-05, 7.5559262768365443e-05, 6.1604936490766704e-05, 6.775846122764051e-05, 8.1248945207335055e-05, 7.0884190790820867e-05, 5.5052787502063438e-05, 5.6785691413097084e-05, 5.9717523981817067e-05, 6.0634440160356462e-05, } };
+const TfArray<16, float> quant8_scale = { 16, { 6.056965867173858e-05, 6.2134589825291187e-05, 6.6328109824098647e-05, 6.1994862335268408e-05, 6.9289846578612924e-05, 7.2192327934317291e-05, 5.9818081354023889e-05, 7.427347736665979e-05, 6.1891507357358932e-05, 6.5177911892533302e-05, 6.7169479734729975e-05, 7.2659320721868426e-05, 5.8501922467257828e-05, 7.1098060288932174e-05, 8.2599566667340696e-05, 5.9874506405321881e-05, } };
 const TfArray<16, int> quant8_zero = { 16, { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 } };
 const TfLiteAffineQuantization quant8 = { (TfLiteFloatArray*)&quant8_scale, (TfLiteIntArray*)&quant8_zero, 0 };
 const ALIGN(16) int8_t tensor_data9[16*1*3*8] = { 
-  /* [0][0][][] */ 60,30,127,109,-29,-17,16,44, -35,12,12,-5,-48,11,97,-58, 32,20,44,20,-55,-21,99,-6, 
-  /* [1][0][][] */ -61,69,9,72,-15,-60,35,39, -95,-47,-39,16,85,90,127,91, 78,-2,39,-97,-34,-120,18,11, 
-  /* [2][0][][] */ -18,41,-42,9,-7,-48,-27,48, 59,11,41,50,41,-127,-36,119, -110,65,10,-47,-31,-4,53,14, 
-  /* [3][0][][] */ 40,-57,73,-23,70,-70,-127,77, 14,-125,-18,78,1,-49,-73,35, -94,-23,-16,-22,64,-35,48,54, 
-  /* [4][0][][] */ -87,-95,-127,-32,-110,-103,51,58, -115,-68,-86,-57,-17,99,85,-43, 35,70,46,-39,-112,111,0,19, 
-  /* [5][0][][] */ -75,57,74,23,-1,-127,-73,101, -66,54,-28,-27,65,22,-110,-5, -60,105,28,31,-8,-29,-101,105, 
-  /* [6][0][][] */ 110,21,78,28,-68,-2,29,-4, 75,-43,127,-117,-45,17,15,48, -16,-99,-1,78,-19,-2,-112,-96, 
-  /* [7][0][][] */ -18,28,-37,-127,-94,78,54,16, 64,79,45,82,66,80,28,22, -1,-10,-51,-15,52,61,77,9, 
-  /* [8][0][][] */ 66,-72,89,43,53,-44,79,89, 8,-28,-61,59,116,-16,-86,99, 5,-45,127,50,19,127,-26,-57, 
-  /* [9][0][][] */ 16,-71,60,127,-76,59,121,66, -47,-68,-2,-44,-21,61,-29,5, 10,-71,-14,67,-34,36,-10,35, 
-  /* [10][0][][] */ -85,-17,-30,44,36,-60,-3,52, -104,-69,-39,28,8,-113,-75,75, -50,-8,-66,40,-43,33,-48,127, 
-  /* [11][0][][] */ -71,79,-44,127,87,6,-35,-37, -49,-28,34,28,105,-106,-49,65, -47,-7,-44,80,-79,-71,-76,-1, 
-  /* [12][0][][] */ -115,78,-93,127,-36,19,86,-68, 79,5,-104,-20,-85,100,-122,-27, 67,67,48,82,58,-107,-99,107, 
-  /* [13][0][][] */ 43,46,-11,-80,-125,123,-61,-109, 113,106,-33,-83,-127,-87,-58,-69, -25,62,124,-29,94,-78,-59,89, 
-  /* [14][0][][] */ 87,7,88,-74,-66,63,-5,-116, 0,110,122,12,-43,27,43,-100, 88,-127,22,90,-12,-109,-34,-87, 
-  /* [15][0][][] */ 42,34,6,-47,64,-65,-2,104, -6,-65,102,-80,40,-87,87,66, -50,-57,127,-84,-121,-34,57,58, 
+  /* [0][0][][] */ 37,85,119,120,-32,-2,-24,18, -2,66,30,-23,-86,32,18,-39, 79,127,79,122,-98,-19,24,-20, 
+  /* [1][0][][] */ 0,116,31,47,-30,-76,-60,65, -41,-5,-40,-16,77,127,47,116, 85,12,12,-117,-52,-60,-10,8, 
+  /* [2][0][][] */ -22,-2,-73,-13,27,-84,35,81, 82,-24,51,10,71,-127,30,110, -92,-1,17,-82,-7,-19,93,-35, 
+  /* [3][0][][] */ 41,-85,54,-85,121,-95,-51,99, 37,-112,7,16,49,-106,-21,49, -84,-63,-54,-37,69,-47,127,9, 
+  /* [4][0][][] */ -27,-32,-37,-46,-37,-41,16,72, -114,-3,-62,-75,-22,127,23,38, 97,62,60,-21,-72,119,-46,53, 
+  /* [5][0][][] */ -108,42,31,34,12,-103,16,127, -106,32,-47,-61,64,50,-29,4, -80,81,35,34,-8,-14,-55,47, 
+  /* [6][0][][] */ 27,-36,13,33,-104,-56,78,39, -18,-77,65,-127,22,-34,77,93, -103,-110,-67,96,1,26,-34,-97, 
+  /* [7][0][][] */ 9,55,-9,-127,-127,58,63,-2, 48,83,88,67,30,46,19,0, 11,4,-52,19,48,42,64,-13, 
+  /* [8][0][][] */ 3,-118,73,39,22,3,127,24, -105,-87,-98,42,110,-27,-90,62, -57,-97,69,27,7,23,-53,-34, 
+  /* [9][0][][] */ 67,-95,-3,25,-38,71,80,79, -40,-84,-25,-99,29,5,-8,71, -3,-75,-39,22,13,12,1,127, 
+  /* [10][0][][] */ -75,16,-113,127,13,-23,84,16, -79,-80,-27,29,-70,-41,-92,56, -45,-16,4,109,-64,74,-43,48, 
+  /* [11][0][][] */ -108,-3,-39,69,112,-1,20,-38, -55,-89,27,-26,111,-127,30,13, -48,-47,-38,33,-18,-92,-64,-57, 
+  /* [12][0][][] */ -66,55,-60,95,-78,-10,36,-74, 41,47,-114,-64,-121,42,-88,-42, 114,104,76,18,12,-127,-60,56, 
+  /* [13][0][][] */ 47,36,-22,-19,-123,74,-97,-35, 127,87,-49,6,-110,-65,-125,-63, 12,58,79,-44,60,-57,-50,106, 
+  /* [14][0][][] */ 48,6,83,-21,-1,32,0,-41, -17,81,107,55,-16,-15,41,-69, 61,-69,5,127,-7,-60,11,-56, 
+  /* [15][0][][] */ 127,49,-35,-55,42,-19,-69,123, 51,-60,32,-80,70,-124,44,112, -58,-101,35,-83,-44,-82,69,89, 
 };
 const TfArray<4, int> tensor_dimension9 = { 4, { 16,1,3,8 } };
-const TfArray<16, float> quant9_scale = { 16, { 0.0030500488355755806, 0.0028062432538717985, 0.0027762351091951132, 0.0025489295367151499, 0.002267439616844058, 0.0028161031659692526, 0.0026926007121801376, 0.0030826348811388016, 0.0025133322924375534, 0.0027643812354654074, 0.0033147600479424, 0.0028919032774865627, 0.0022460203617811203, 0.0023167186882346869, 0.002436330309137702, 0.0024737382773309946, } };
+const TfArray<16, float> quant9_scale = { 16, { 0.002550340723246336, 0.0026162334252148867, 0.0027928054332733154, 0.0026103502605110407, 0.0029175120871514082, 0.0030397237278521061, 0.0025186948478221893, 0.0031273523345589638, 0.0026059984229505062, 0.0027443752624094486, 0.0028282320126891136, 0.0030593869742006063, 0.0024632767308503389, 0.0029936486389487982, 0.0034779298584908247, 0.0025210706517100334, } };
 const TfArray<16, int> quant9_zero = { 16, { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 } };
 const TfLiteAffineQuantization quant9 = { (TfLiteFloatArray*)&quant9_scale, (TfLiteIntArray*)&quant9_zero, 0 };
-const ALIGN(16) int32_t tensor_data10[8] = { -251, -887, -934, -291, -513, -690, -723, 803, };
+const ALIGN(16) int32_t tensor_data10[8] = { 408, 132, -425, -539, -629, 773, -845, -939, };
 const TfArray<1, int> tensor_dimension10 = { 1, { 8 } };
-const TfArray<8, float> quant10_scale = { 8, { 0.00012822283315472305, 0.00012022347073070705, 0.00012909258657600731, 0.00017477068467997015, 0.00013211056648287922, 0.0001283288438571617, 0.00014190837100613862, 0.00011991382052656263, } };
+const TfArray<8, float> quant10_scale = { 8, { 0.00011805930262198672, 0.00014161127910483629, 0.00013710603525396436, 0.00014912952610757202, 0.00012944960326422006, 0.00012424476153682917, 9.9138342193327844e-05, 0.0001270390348508954, } };
 const TfArray<8, int> quant10_zero = { 8, { 0,0,0,0,0,0,0,0 } };
 const TfLiteAffineQuantization quant10 = { (TfLiteFloatArray*)&quant10_scale, (TfLiteIntArray*)&quant10_zero, 0 };
 const ALIGN(16) int8_t tensor_data11[8*1*3*13] = { 
-  /* [0][0][][] */ 7,91,-6,50,-77,16,74,-82,-99,3,77,-69,52, -71,-73,23,-4,-41,21,-86,15,0,58,77,37,-34, 5,-72,-7,-90,-127,97,42,-60,63,-51,58,-31,16, 
-  /* [1][0][][] */ -116,-73,21,99,-107,89,-91,42,-55,25,-5,-70,98, -70,101,58,-79,-65,109,100,-14,-95,83,53,3,-23, -60,-71,13,56,31,-127,-31,-2,31,112,-41,-112,20, 
-  /* [2][0][][] */ 50,110,-102,-48,-91,-67,52,42,-72,22,113,-95,54, -68,-35,39,33,-89,95,68,107,-42,-36,57,-1,-63, -60,-80,-23,-127,-97,56,-50,71,68,-120,91,-88,-16, 
-  /* [3][0][][] */ -85,-13,-35,-60,38,-46,72,30,60,-98,16,-64,20, 17,13,-13,127,21,25,24,49,69,46,57,29,72, 56,-94,39,64,38,30,52,18,30,18,-34,2,-57, 
-  /* [4][0][][] */ 84,-72,10,127,-57,41,-12,68,-40,-20,-73,76,37, 41,-60,98,-11,-38,-26,-67,0,-49,-74,30,-82,-20, -33,-3,70,19,-52,21,-77,-43,77,-86,7,104,-79, 
-  /* [5][0][][] */ -30,16,-18,50,15,7,-67,7,-8,75,-61,74,3, 96,-24,-9,-92,26,16,60,-87,-25,98,-119,-26,-94, 53,70,-51,112,-88,127,-1,-61,83,39,-24,-30,100, 
-  /* [6][0][][] */ 70,89,10,1,-7,-39,-24,-118,-84,-67,-61,-22,-65, -15,33,12,-31,123,40,13,-66,39,35,36,-46,20, 127,48,48,-39,11,-76,5,-119,-69,44,-113,56,-53, 
-  /* [7][0][][] */ 73,-29,61,31,95,-38,-98,79,-90,-85,90,-76,45, -117,-65,54,-17,127,-101,-3,7,42,-97,39,107,-11, -42,63,104,81,-28,-118,74,108,-9,-82,99,-22,-20, 
+  /* [0][0][][] */ -54,28,4,70,-112,-18,28,-31,-65,-9,33,-83,92, -112,-78,54,34,-28,-13,-127,31,-13,61,91,74,48, -22,-88,35,-48,-100,35,-31,-62,6,-24,18,-5,95, 
+  /* [1][0][][] */ -127,-43,-11,26,-88,11,-115,20,-28,3,-25,-83,42, -106,107,41,-54,-8,60,52,47,-26,55,52,51,-15, -123,-25,-19,22,1,-88,-46,25,28,19,-26,-37,-17, 
+  /* [2][0][][] */ 29,46,-86,-2,-74,-76,15,42,-57,12,20,-72,27, -80,-6,78,51,-49,15,-2,33,-48,-26,-8,32,-61, -79,-98,-34,-127,-51,-3,-87,23,66,-78,14,-100,-42, 
+  /* [3][0][][] */ -127,-54,-45,-99,13,-58,31,-20,26,-100,-17,-70,-19, 56,46,17,99,25,15,-30,13,36,56,57,53,60, 44,-39,97,47,53,41,37,23,19,23,-14,33,-46, 
+  /* [4][0][][] */ 85,-25,-44,21,-35,-12,23,22,-53,-33,-88,9,10, 127,15,78,-91,-55,-52,-5,-17,-58,-80,-7,-90,-29, 62,35,21,-90,-90,21,31,-22,41,-109,-27,36,-52, 
+  /* [5][0][][] */ -23,45,-9,36,71,27,-58,2,14,76,6,110,10, 17,-63,-27,-95,-9,-9,41,-52,-15,65,-81,-4,-98, -35,21,-79,98,-127,44,-44,-13,90,63,2,-50,40, 
+  /* [6][0][][] */ 93,50,-58,15,-47,-22,-32,-61,-89,-126,-85,27,-44, -6,-13,-83,-96,58,22,28,-12,51,-5,33,-17,25, 112,-6,-8,-62,24,-75,41,-88,-49,46,-127,93,-71, 
+  /* [7][0][][] */ 42,28,81,28,59,-25,-94,13,-65,-78,68,-127,74, -33,19,79,29,63,-75,8,-55,-14,-100,0,4,29, 3,65,87,54,-55,-80,14,23,-50,-101,12,-58,31, 
 };
 const TfArray<4, int> tensor_dimension11 = { 4, { 8,1,3,13 } };
-const TfArray<8, float> quant11_scale = { 8, { 0.0029719530139118433, 0.0027865434531122446, 0.0029921121895313263, 0.0040508406236767769, 0.0030620628967881203, 0.0029744100756943226, 0.0032891568262130022, 0.0027793664485216141, } };
+const TfArray<8, float> quant11_scale = { 8, { 0.0032838585320860147, 0.0039389645680785179, 0.0038136495277285576, 0.0041480869986116886, 0.0036006835289299488, 0.0034559089690446854, 0.0027575655840337276, 0.0035336324945092201, } };
 const TfArray<8, int> quant11_zero = { 8, { 0,0,0,0,0,0,0,0 } };
 const TfLiteAffineQuantization quant11 = { (TfLiteFloatArray*)&quant11_scale, (TfLiteIntArray*)&quant11_zero, 0 };
-const TfArray<4, int> tensor_dimension12 = { 4, { 1,1,79,13 } };
-const TfArray<1, float> quant12_scale = { 1, { 0.043144300580024719, } };
-const TfArray<1, int> quant12_zero = { 1, { -39 } };
+const TfArray<4, int> tensor_dimension12 = { 4, { 1,1,47,13 } };
+const TfArray<1, float> quant12_scale = { 1, { 0.035951398313045502, } };
+const TfArray<1, int> quant12_zero = { 1, { 31 } };
 const TfLiteAffineQuantization quant12 = { (TfLiteFloatArray*)&quant12_scale, (TfLiteIntArray*)&quant12_zero, 0 };
-const TfArray<4, int> tensor_dimension13 = { 4, { 1,1,79,8 } };
-const TfArray<1, float> quant13_scale = { 1, { 0.02451125904917717, } };
+const TfArray<4, int> tensor_dimension13 = { 4, { 1,1,47,8 } };
+const TfArray<1, float> quant13_scale = { 1, { 0.023749634623527527, } };
 const TfArray<1, int> quant13_zero = { 1, { -128 } };
 const TfLiteAffineQuantization quant13 = { (TfLiteFloatArray*)&quant13_scale, (TfLiteIntArray*)&quant13_zero, 0 };
-const TfArray<4, int> tensor_dimension14 = { 4, { 1,79,1,8 } };
-const TfArray<1, float> quant14_scale = { 1, { 0.02451125904917717, } };
+const TfArray<4, int> tensor_dimension14 = { 4, { 1,47,1,8 } };
+const TfArray<1, float> quant14_scale = { 1, { 0.023749634623527527, } };
 const TfArray<1, int> quant14_zero = { 1, { -128 } };
 const TfLiteAffineQuantization quant14 = { (TfLiteFloatArray*)&quant14_scale, (TfLiteIntArray*)&quant14_zero, 0 };
-const TfArray<4, int> tensor_dimension15 = { 4, { 1,40,1,8 } };
-const TfArray<1, float> quant15_scale = { 1, { 0.02451125904917717, } };
+const TfArray<4, int> tensor_dimension15 = { 4, { 1,24,1,8 } };
+const TfArray<1, float> quant15_scale = { 1, { 0.023749634623527527, } };
 const TfArray<1, int> quant15_zero = { 1, { -128 } };
 const TfLiteAffineQuantization quant15 = { (TfLiteFloatArray*)&quant15_scale, (TfLiteIntArray*)&quant15_zero, 0 };
-const TfArray<4, int> tensor_dimension16 = { 4, { 1,1,40,8 } };
-const TfArray<1, float> quant16_scale = { 1, { 0.02451125904917717, } };
+const TfArray<4, int> tensor_dimension16 = { 4, { 1,1,24,8 } };
+const TfArray<1, float> quant16_scale = { 1, { 0.023749634623527527, } };
 const TfArray<1, int> quant16_zero = { 1, { -128 } };
 const TfLiteAffineQuantization quant16 = { (TfLiteFloatArray*)&quant16_scale, (TfLiteIntArray*)&quant16_zero, 0 };
-const TfArray<4, int> tensor_dimension17 = { 4, { 1,1,40,16 } };
-const TfArray<1, float> quant17_scale = { 1, { 0.019698986783623695, } };
+const TfArray<4, int> tensor_dimension17 = { 4, { 1,1,24,16 } };
+const TfArray<1, float> quant17_scale = { 1, { 0.021199505776166916, } };
 const TfArray<1, int> quant17_zero = { 1, { -128 } };
 const TfLiteAffineQuantization quant17 = { (TfLiteFloatArray*)&quant17_scale, (TfLiteIntArray*)&quant17_zero, 0 };
-const TfArray<4, int> tensor_dimension18 = { 4, { 1,40,1,16 } };
-const TfArray<1, float> quant18_scale = { 1, { 0.019698986783623695, } };
+const TfArray<4, int> tensor_dimension18 = { 4, { 1,24,1,16 } };
+const TfArray<1, float> quant18_scale = { 1, { 0.021199505776166916, } };
 const TfArray<1, int> quant18_zero = { 1, { -128 } };
 const TfLiteAffineQuantization quant18 = { (TfLiteFloatArray*)&quant18_scale, (TfLiteIntArray*)&quant18_zero, 0 };
-const TfArray<4, int> tensor_dimension19 = { 4, { 1,20,1,16 } };
-const TfArray<1, float> quant19_scale = { 1, { 0.019698986783623695, } };
+const TfArray<4, int> tensor_dimension19 = { 4, { 1,12,1,16 } };
+const TfArray<1, float> quant19_scale = { 1, { 0.021199505776166916, } };
 const TfArray<1, int> quant19_zero = { 1, { -128 } };
 const TfLiteAffineQuantization quant19 = { (TfLiteFloatArray*)&quant19_scale, (TfLiteIntArray*)&quant19_zero, 0 };
-const TfArray<2, int> tensor_dimension20 = { 2, { 1,320 } };
-const TfArray<1, float> quant20_scale = { 1, { 0.019698986783623695, } };
+const TfArray<2, int> tensor_dimension20 = { 2, { 1,192 } };
+const TfArray<1, float> quant20_scale = { 1, { 0.021199505776166916, } };
 const TfArray<1, int> quant20_zero = { 1, { -128 } };
 const TfLiteAffineQuantization quant20 = { (TfLiteFloatArray*)&quant20_scale, (TfLiteIntArray*)&quant20_zero, 0 };
 const TfArray<2, int> tensor_dimension21 = { 2, { 1,3 } };
-const TfArray<1, float> quant21_scale = { 1, { 0.052825186401605606, } };
-const TfArray<1, int> quant21_zero = { 1, { 3 } };
+const TfArray<1, float> quant21_scale = { 1, { 0.067364439368247986, } };
+const TfArray<1, int> quant21_zero = { 1, { 22 } };
 const TfLiteAffineQuantization quant21 = { (TfLiteFloatArray*)&quant21_scale, (TfLiteIntArray*)&quant21_zero, 0 };
 const TfArray<2, int> tensor_dimension22 = { 2, { 1,3 } };
 const TfArray<1, float> quant22_scale = { 1, { 0.00390625, } };
@@ -301,28 +301,28 @@ const TfArray<1, int> outputs10 = { 1, { 22 } };
 };
 
 TensorInfo_t tensorData[] = {
-{ kTfLiteArenaRw, kTfLiteInt8, (int32_t*)(tensor_arena + 1040), (TfLiteIntArray*)&g0::tensor_dimension0, 1027, {kTfLiteAffineQuantization, const_cast<void*>(static_cast<const void*>(&g0::quant0))}, },
+{ kTfLiteArenaRw, kTfLiteInt8, (int32_t*)(tensor_arena + 624), (TfLiteIntArray*)&g0::tensor_dimension0, 611, {kTfLiteAffineQuantization, const_cast<void*>(static_cast<const void*>(&g0::quant0))}, },
 { kTfLiteMmapRo, kTfLiteInt32, (int32_t*)g0::tensor_data1, (TfLiteIntArray*)&g0::tensor_dimension1, 16, {kTfLiteNoQuantization, nullptr}, },
 { kTfLiteMmapRo, kTfLiteInt32, (int32_t*)g0::tensor_data2, (TfLiteIntArray*)&g0::tensor_dimension2, 16, {kTfLiteNoQuantization, nullptr}, },
 { kTfLiteMmapRo, kTfLiteInt32, (int32_t*)g0::tensor_data3, (TfLiteIntArray*)&g0::tensor_dimension3, 16, {kTfLiteNoQuantization, nullptr}, },
 { kTfLiteMmapRo, kTfLiteInt32, (int32_t*)g0::tensor_data4, (TfLiteIntArray*)&g0::tensor_dimension4, 16, {kTfLiteNoQuantization, nullptr}, },
 { kTfLiteMmapRo, kTfLiteInt32, (int32_t*)g0::tensor_data5, (TfLiteIntArray*)&g0::tensor_dimension5, 8, {kTfLiteNoQuantization, nullptr}, },
 { kTfLiteMmapRo, kTfLiteInt32, (int32_t*)g0::tensor_data6, (TfLiteIntArray*)&g0::tensor_dimension6, 12, {kTfLiteAffineQuantization, const_cast<void*>(static_cast<const void*>(&g0::quant6))}, },
-{ kTfLiteMmapRo, kTfLiteInt8, (int32_t*)g0::tensor_data7, (TfLiteIntArray*)&g0::tensor_dimension7, 960, {kTfLiteAffineQuantization, const_cast<void*>(static_cast<const void*>(&g0::quant7))}, },
+{ kTfLiteMmapRo, kTfLiteInt8, (int32_t*)g0::tensor_data7, (TfLiteIntArray*)&g0::tensor_dimension7, 576, {kTfLiteAffineQuantization, const_cast<void*>(static_cast<const void*>(&g0::quant7))}, },
 { kTfLiteMmapRo, kTfLiteInt32, (int32_t*)g0::tensor_data8, (TfLiteIntArray*)&g0::tensor_dimension8, 64, {kTfLiteAffineQuantization, const_cast<void*>(static_cast<const void*>(&g0::quant8))}, },
 { kTfLiteMmapRo, kTfLiteInt8, (int32_t*)g0::tensor_data9, (TfLiteIntArray*)&g0::tensor_dimension9, 384, {kTfLiteAffineQuantization, const_cast<void*>(static_cast<const void*>(&g0::quant9))}, },
 { kTfLiteMmapRo, kTfLiteInt32, (int32_t*)g0::tensor_data10, (TfLiteIntArray*)&g0::tensor_dimension10, 32, {kTfLiteAffineQuantization, const_cast<void*>(static_cast<const void*>(&g0::quant10))}, },
 { kTfLiteMmapRo, kTfLiteInt8, (int32_t*)g0::tensor_data11, (TfLiteIntArray*)&g0::tensor_dimension11, 312, {kTfLiteAffineQuantization, const_cast<void*>(static_cast<const void*>(&g0::quant11))}, },
-{ kTfLiteArenaRw, kTfLiteInt8, (int32_t*)(tensor_arena + 0), (TfLiteIntArray*)&g0::tensor_dimension12, 1027, {kTfLiteAffineQuantization, const_cast<void*>(static_cast<const void*>(&g0::quant12))}, },
-{ kTfLiteArenaRw, kTfLiteInt8, (int32_t*)(tensor_arena + 1040), (TfLiteIntArray*)&g0::tensor_dimension13, 632, {kTfLiteAffineQuantization, const_cast<void*>(static_cast<const void*>(&g0::quant13))}, },
-{ kTfLiteArenaRw, kTfLiteInt8, (int32_t*)(tensor_arena + 0), (TfLiteIntArray*)&g0::tensor_dimension14, 632, {kTfLiteAffineQuantization, const_cast<void*>(static_cast<const void*>(&g0::quant14))}, },
-{ kTfLiteArenaRw, kTfLiteInt8, (int32_t*)(tensor_arena + 640), (TfLiteIntArray*)&g0::tensor_dimension15, 320, {kTfLiteAffineQuantization, const_cast<void*>(static_cast<const void*>(&g0::quant15))}, },
-{ kTfLiteArenaRw, kTfLiteInt8, (int32_t*)(tensor_arena + 0), (TfLiteIntArray*)&g0::tensor_dimension16, 320, {kTfLiteAffineQuantization, const_cast<void*>(static_cast<const void*>(&g0::quant16))}, },
-{ kTfLiteArenaRw, kTfLiteInt8, (int32_t*)(tensor_arena + 640), (TfLiteIntArray*)&g0::tensor_dimension17, 640, {kTfLiteAffineQuantization, const_cast<void*>(static_cast<const void*>(&g0::quant17))}, },
-{ kTfLiteArenaRw, kTfLiteInt8, (int32_t*)(tensor_arena + 0), (TfLiteIntArray*)&g0::tensor_dimension18, 640, {kTfLiteAffineQuantization, const_cast<void*>(static_cast<const void*>(&g0::quant18))}, },
-{ kTfLiteArenaRw, kTfLiteInt8, (int32_t*)(tensor_arena + 640), (TfLiteIntArray*)&g0::tensor_dimension19, 320, {kTfLiteAffineQuantization, const_cast<void*>(static_cast<const void*>(&g0::quant19))}, },
-{ kTfLiteArenaRw, kTfLiteInt8, (int32_t*)(tensor_arena + 0), (TfLiteIntArray*)&g0::tensor_dimension20, 320, {kTfLiteAffineQuantization, const_cast<void*>(static_cast<const void*>(&g0::quant20))}, },
-{ kTfLiteArenaRw, kTfLiteInt8, (int32_t*)(tensor_arena + 320), (TfLiteIntArray*)&g0::tensor_dimension21, 3, {kTfLiteAffineQuantization, const_cast<void*>(static_cast<const void*>(&g0::quant21))}, },
+{ kTfLiteArenaRw, kTfLiteInt8, (int32_t*)(tensor_arena + 0), (TfLiteIntArray*)&g0::tensor_dimension12, 611, {kTfLiteAffineQuantization, const_cast<void*>(static_cast<const void*>(&g0::quant12))}, },
+{ kTfLiteArenaRw, kTfLiteInt8, (int32_t*)(tensor_arena + 624), (TfLiteIntArray*)&g0::tensor_dimension13, 376, {kTfLiteAffineQuantization, const_cast<void*>(static_cast<const void*>(&g0::quant13))}, },
+{ kTfLiteArenaRw, kTfLiteInt8, (int32_t*)(tensor_arena + 0), (TfLiteIntArray*)&g0::tensor_dimension14, 376, {kTfLiteAffineQuantization, const_cast<void*>(static_cast<const void*>(&g0::quant14))}, },
+{ kTfLiteArenaRw, kTfLiteInt8, (int32_t*)(tensor_arena + 384), (TfLiteIntArray*)&g0::tensor_dimension15, 192, {kTfLiteAffineQuantization, const_cast<void*>(static_cast<const void*>(&g0::quant15))}, },
+{ kTfLiteArenaRw, kTfLiteInt8, (int32_t*)(tensor_arena + 0), (TfLiteIntArray*)&g0::tensor_dimension16, 192, {kTfLiteAffineQuantization, const_cast<void*>(static_cast<const void*>(&g0::quant16))}, },
+{ kTfLiteArenaRw, kTfLiteInt8, (int32_t*)(tensor_arena + 384), (TfLiteIntArray*)&g0::tensor_dimension17, 384, {kTfLiteAffineQuantization, const_cast<void*>(static_cast<const void*>(&g0::quant17))}, },
+{ kTfLiteArenaRw, kTfLiteInt8, (int32_t*)(tensor_arena + 0), (TfLiteIntArray*)&g0::tensor_dimension18, 384, {kTfLiteAffineQuantization, const_cast<void*>(static_cast<const void*>(&g0::quant18))}, },
+{ kTfLiteArenaRw, kTfLiteInt8, (int32_t*)(tensor_arena + 384), (TfLiteIntArray*)&g0::tensor_dimension19, 192, {kTfLiteAffineQuantization, const_cast<void*>(static_cast<const void*>(&g0::quant19))}, },
+{ kTfLiteArenaRw, kTfLiteInt8, (int32_t*)(tensor_arena + 0), (TfLiteIntArray*)&g0::tensor_dimension20, 192, {kTfLiteAffineQuantization, const_cast<void*>(static_cast<const void*>(&g0::quant20))}, },
+{ kTfLiteArenaRw, kTfLiteInt8, (int32_t*)(tensor_arena + 192), (TfLiteIntArray*)&g0::tensor_dimension21, 3, {kTfLiteAffineQuantization, const_cast<void*>(static_cast<const void*>(&g0::quant21))}, },
 { kTfLiteArenaRw, kTfLiteInt8, (int32_t*)(tensor_arena + 0), (TfLiteIntArray*)&g0::tensor_dimension22, 3, {kTfLiteAffineQuantization, const_cast<void*>(static_cast<const void*>(&g0::quant22))}, },
 };
 
@@ -604,7 +604,7 @@ class EonMicroContext : public MicroContext {
 
 } // namespace
 
-TfLiteStatus tflite_learn_22_init( void*(*alloc_fnc)(size_t,size_t) ) {
+TfLiteStatus tflite_learn_3_init( void*(*alloc_fnc)(size_t,size_t) ) {
 #ifdef EI_CLASSIFIER_ALLOCATION_HEAP
   tensor_arena = (uint8_t*) alloc_fnc(16, kTensorArenaSize);
   if (!tensor_arena) {
@@ -679,17 +679,17 @@ TfLiteStatus tflite_learn_22_init( void*(*alloc_fnc)(size_t,size_t) ) {
   return kTfLiteOk;
 }
 
-TfLiteStatus tflite_learn_22_input(int index, TfLiteTensor *tensor) {
+TfLiteStatus tflite_learn_3_input(int index, TfLiteTensor *tensor) {
   init_tflite_tensor(in_tensor_indices[index], tensor);
   return kTfLiteOk;
 }
 
-TfLiteStatus tflite_learn_22_output(int index, TfLiteTensor *tensor) {
+TfLiteStatus tflite_learn_3_output(int index, TfLiteTensor *tensor) {
   init_tflite_tensor(out_tensor_indices[index], tensor);
   return kTfLiteOk;
 }
 
-TfLiteStatus tflite_learn_22_invoke() {
+TfLiteStatus tflite_learn_3_invoke() {
   for (size_t i = 0; i < 11; ++i) {
     ResetTensors();
 
@@ -761,7 +761,7 @@ TfLiteStatus tflite_learn_22_invoke() {
   return kTfLiteOk;
 }
 
-TfLiteStatus tflite_learn_22_reset( void (*free_fnc)(void* ptr) ) {
+TfLiteStatus tflite_learn_3_reset( void (*free_fnc)(void* ptr) ) {
 #ifdef EI_CLASSIFIER_ALLOCATION_HEAP
   free_fnc(tensor_arena);
 #endif

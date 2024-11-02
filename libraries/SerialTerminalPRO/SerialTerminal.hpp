@@ -75,19 +75,6 @@ namespace maschinendeck
     String path = "/";
     String tips_symbol = "> ";
 
-#ifndef ST_FLAG_NOHELP
-    void printCommands()
-    {
-      for (uint8_t i = 0; i < this->size_; i++)
-      {
-        Serial.println("\t" + this->commands[i]->command + "\t" + this->commands[i]->description);
-      }
-#ifndef ST_FLAG_NOPROMPT
-      Serial.print(path + tips_symbol);
-#endif
-    }
-#endif
-
   public:
     SerialTerminal(long baudrate = 0) : size_(0), firstRun(true), message("")
     {
@@ -104,6 +91,19 @@ namespace maschinendeck
       Serial.println("  available commands:");
 #endif
     }
+
+#ifndef ST_FLAG_NOHELP
+    void printCommands()
+    {
+      for (uint8_t i = 0; i < this->size_; i++)
+      {
+        Serial.println("\t" + this->commands[i]->command + "\t" + this->commands[i]->description);
+      }
+#ifndef ST_FLAG_NOPROMPT
+      Serial.print(path + tips_symbol);
+#endif
+    }
+#endif
 
     void add(String command, void (*callback)(String param), String description = "")
     {
