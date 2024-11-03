@@ -8,12 +8,30 @@ struct MIC_Recorder
 {
   bool start = false;
   uint8_t state = Record_Standby;
-  uint32_t seconds; //需要录制的总时长
+  uint32_t seconds; // 需要录制的总时长
   uint8_t *wav_buffer;
   size_t wav_size;
 };
 
 static MIC_Recorder recorder;
+
+size_t MIC_recordRaw(void *simpleBuffer, size_t bytes_to_read)
+{
+  uint32_t sample_rate = i2s.rxSampleRate();
+  uint16_t sample_width = (uint16_t)i2s.rxDataWidth();
+  uint16_t num_channels = (uint16_t)i2s.rxSlotMode();
+
+  log_d("Record WAV: rate:%lu, bits:%u, channels:%u, size:%lu", sample_rate, sample_width, num_channels, bytes_to_read);
+
+  size_t wav_size = i2s.readBytes((char *)simpleBuffer, bytes_to_read);
+  
+  if (i2s.lastError())
+  {
+    log_e("Read Failed! %d", i2s.lastError());
+  }
+
+  return wav_size;
+}
 
 void _MIC_Init()
 {
@@ -42,7 +60,7 @@ void MICTask(void *parameter)
     case Record_Busy:
     {
       uint32_t w_size = writeRawFile(SD, "/record/test.wav", recorder.wav_buffer, recorder.wav_size);
-      printf("w_size: %d, wav_size: %d\r\n", w_size, recorder.wav_size);
+      printf("w_size: %lu, wav_size: %lu\r\n", w_size, recorder.wav_size);
       recorder.state = Record_Finish;
       break;
     }
@@ -65,7 +83,8 @@ void MICTask(void *parameter)
 
 void MIC_Init(void)
 {
-
+  _MIC_Init();
+  
   xTaskCreatePinnedToCore(
       MICTask,
       "MICTask",

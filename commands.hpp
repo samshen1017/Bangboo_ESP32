@@ -169,6 +169,15 @@ void mic_setState(String opts)
     MIC_ForceChangeState(state);
 }
 
+/* ====================== EDGE Impulse ====================== */
+#include "EDGEImpulse.h"
+void edgeimpulse_enable(String opts)
+{
+    maschinendeck::Pair<String, String> operands = maschinendeck::SerialTerminal::ParseCommand(opts);
+    bool enable = (bool)operands.first().toInt();
+    EDGEImpulse_Enable(enable);
+}
+
 /* ====================== Commands Init ====================== */
 void commands_init()
 {
@@ -191,4 +200,6 @@ void commands_init()
     /*===================== MIC Test =====================*/
     term_global->add("mic-record", &mic_record, "Record wav file");
     term_global->add("mic-setsate", &mic_setState, "Record force change state");
+    /* ====================== EDGE Impulse ====================== */
+    term_global->add("edge-en", &edgeimpulse_enable, "EDGE Impulse Enable");
 }

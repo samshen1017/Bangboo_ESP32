@@ -23,7 +23,7 @@ void readFile(fs::FS &fs, const char *path);
 
 void writeFile(fs::FS &fs, const char *path, const char *message);
 
-uint32_t writeRawFile(fs::FS &fs, const char *path, uint8_t *raw, size_t length);
+size_t writeRawFile(fs::FS &fs, const char *path, uint8_t *raw, size_t length);
 
 void renameFile(fs::FS &fs, const char *path1, const char *path2);
 

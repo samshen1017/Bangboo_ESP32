@@ -184,8 +184,7 @@ void writeFile(fs::FS &fs, const char *path, const char *message)
   file.close();
 }
 
-// #define WriteBufSize 4096
-uint32_t writeRawFile(fs::FS &fs, const char *path, uint8_t *raw, size_t length)
+size_t writeRawFile(fs::FS &fs, const char *path, uint8_t *raw, size_t length)
 {
   Serial.printf("Writing raw file: %s\r\n", path);
   uint32_t written = 0;
@@ -198,27 +197,6 @@ uint32_t writeRawFile(fs::FS &fs, const char *path, uint8_t *raw, size_t length)
   written = f.write(raw, length);
   f.flush();
   f.close();
-  // for (int i = 0; i < length; i += WriteBufSize)
-  // {
-  //   File f = fs.open(path, FILE_WRITE);
-  //   if (!f)
-  //   {
-  //     Serial.println("Failed to open file for writing");
-  //     return 0;
-  //   }
-  //   f.seek(i);
-  //   if (i + WriteBufSize > length)
-  //   {
-  //     // last once
-  //     written += f.write(raw + i, length - i);
-  //   }
-  //   else
-  //   {
-  //     written += f.write(raw + i, WriteBufSize);
-  //   }
-  //   f.flush();
-  //   f.close();
-  // }
   return written;
 }
 

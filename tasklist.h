@@ -17,4 +17,5 @@ private:
   void sdcard_init(void);
   void audio_init(void);
   void mic_init(void);
+  void edgeImpulse_init(void);
 };

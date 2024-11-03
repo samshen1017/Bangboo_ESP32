@@ -7,6 +7,8 @@
 
 #include "MIC_MSM.h"
 
+#include "EDGEImpulse.h"
+
 #include "Display_ST77916.h"
 #include "LVGL_Driver.h"
 #include "LVGL_Example.h"
@@ -20,6 +22,7 @@ void TaskList::init(void)
     this->sdcard_init();
     this->audio_init();
     this->mic_init();
+    this->edgeImpulse_init();
     ESP_LOGI("", "System init success.");
 }
 
@@ -69,11 +72,17 @@ void TaskList::audio_init(void)
 }
 
 /*-------------------- MIC --------------------*/
-
 void TaskList::mic_init(void)
 {
     ESP_LOGI("", "MIC Init.");
     MIC_Init();
+}
+
+/*-------------------- EDGE Impulse --------------------*/
+void TaskList::edgeImpulse_init(void)
+{
+    ESP_LOGI("", "EDGE Impulse Init.");
+    EDGEImpulse_init();
 }
 
 /*-------------------- SerialTerminal --------------------*/

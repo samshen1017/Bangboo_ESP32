@@ -15,6 +15,8 @@ enum RecordState
 
 void MIC_Init(void);
 
+size_t MIC_recordRaw(void *simpleBuffer, size_t bytes_to_read);
+
 void MIC_RecordStart(uint32_t seconds);
 
 void MIC_ForceChangeState(uint8_t state);
