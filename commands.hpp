@@ -136,7 +136,7 @@ void rm(String opts)
 void audio_play(String opts)
 {
     maschinendeck::Pair<String, String> operands = maschinendeck::SerialTerminal::ParseCommand(opts);
-    Audio_PlayByFS(operands.first());
+    Audio_Play(operands.first());
 }
 
 void audio_setVolume(String opts)

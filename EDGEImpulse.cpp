@@ -14,7 +14,7 @@ typedef struct
 } inference_t;
 
 static inference_t inference;
-static const uint32_t sample_buffer_size = 7168;
+static const uint32_t sample_buffer_size = 1024 * 4;
 static signed short sampleBuffer[sample_buffer_size];
 static bool debug_nn = false; // Set this to true to see e.g. features generated from the raw signal
 static int print_results = -(EI_CLASSIFIER_SLICES_PER_MODEL_WINDOW);
@@ -221,29 +221,32 @@ static void EDGEImpulse_loop(void *arg)
 
         if (++print_results >= (EI_CLASSIFIER_SLICES_PER_MODEL_WINDOW))
         {
-            for (size_t i = 0; i < 10; i++)
-            {
-                ei_printf("[%d] ", sampleBuffer[i]);
-            }
-            ei_printf("\r\n");
+            // for (size_t i = 0; i < 10; i++)
+            // {
+            //     ei_printf("[%d] ", sampleBuffer[i]);
+            // }
+            // ei_printf("\r\n");
             // print the predictions
-            ei_printf("Predictions ");
-            ei_printf("(DSP: %d ms., Classification: %d ms., Anomaly: %d ms.)",
-                      result.timing.dsp, result.timing.classification, result.timing.anomaly);
-            ei_printf(": \n");
+            // ei_printf("Predictions ");
+            // ei_printf("(DSP: %d ms., Classification: %d ms., Anomaly: %d ms.)",
+                      // result.timing.dsp, result.timing.classification, result.timing.anomaly);
+            // ei_printf(": \n");
             for (size_t ix = 0; ix < EI_CLASSIFIER_LABEL_COUNT; ix++)
             {
-                ei_printf("    %s: ", result.classification[ix].label);
-                ei_printf_float(result.classification[ix].value);
-                ei_printf("\n");
+                // ei_printf("    %s: ", result.classification[ix].label);
+                // ei_printf_float(result.classification[ix].value);
+                // ei_printf("\n");
                 if (result.classification[ix].label[0] == 'E')
                 {
-                    if (result.classification[ix].value > 0.7)
+                    ei_printf("    %s: ", result.classification[ix].label);
+                    ei_printf_float(result.classification[ix].value);
+                    ei_printf("\n");
+                    if (result.classification[ix].value > 0.5)
                     {
                         static int n = 1;
-                        String f_str = "/audio/Eous/" + String(n % 3 + 1) + ".mp3";
+                        String f_str = "/voice/Eous/" + String(n % 3 + 1) + ".mp3";
                         ei_printf("play %s\r\n", f_str.c_str());
-                        Audio_PlayByFS(f_str.c_str());
+                        Audio_Play(f_str.c_str());
                         n++;
                     }
                 }
@@ -260,7 +263,7 @@ static void EDGEImpulse_loop(void *arg)
 
 static bool edge_impulse_task_start(void)
 {
-    xTaskCreate(EDGEImpulse_loop, "EDGEImpulseLoop", 1024 * 32, NULL, 10, NULL);
+    xTaskCreate(EDGEImpulse_loop, "EDGEImpulseLoop", 1024 * 16, NULL, 3, NULL);
     return true;
 }
 

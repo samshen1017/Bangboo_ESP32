@@ -1,28 +1,18 @@
 #include "Audio_PCM5101.h"
 
-Audio audio;
-void IRAM_ATTR example_increase_audio_tick(void *arg)
+#include "Audio.h"
+#include "SD_Card.h"
+#include "task.h"
+
+static Audio audio;
+static String _path;
+
+static void IRAM_ATTR example_increase_audio_tick(void *arg)
 {
   audio.loop();
 }
 
-void Audio_Init()
-{
-  // Audio
-  audio.setPinout(I2S_BCLK, I2S_LRC, I2S_DOUT);
-  audio.setVolume(3); // 0...21
-
-  esp_timer_handle_t audio_tick_timer = NULL;
-  const esp_timer_create_args_t audio_tick_timer_args = {
-      .callback = &example_increase_audio_tick,
-      .dispatch_method = ESP_TIMER_TASK,
-      .name = "audio_tick",
-      .skip_unhandled_events = true};
-  esp_timer_create(&audio_tick_timer_args, &audio_tick_timer);
-  esp_timer_start_periodic(audio_tick_timer, EXAMPLE_Audio_TICK_PERIOD_MS * 1000);
-}
-
-void Audio_PlayByFS(String path)
+static void Audio_PlayByFile(String path)
 {
   // SD Card
   if (SD.exists(path))
@@ -39,6 +29,43 @@ void Audio_PlayByFS(String path)
     printf("Music Read OK\r\n");
   else
     printf("Music Read Failed\r\n");
+}
+
+static void play_audio_taskhandle(void *arg)
+{
+  while (true)
+  {
+    if (!_path.isEmpty())
+    {
+      Audio_PlayByFile(_path.c_str());
+      _path.clear();
+    }
+    vTaskDelay(pdMS_TO_TICKS(100));
+  }
+}
+
+void Audio_Init()
+{
+  // Audio
+  audio.setPinout(I2S_BCLK, I2S_LRC, I2S_DOUT);
+  audio.setVolume(3); // 0...21
+
+  esp_timer_handle_t audio_tick_timer = NULL;
+  const esp_timer_create_args_t audio_tick_timer_args = {
+      .callback = &example_increase_audio_tick,
+      .dispatch_method = ESP_TIMER_TASK,
+      .name = "audio_tick",
+      .skip_unhandled_events = true,
+      };
+  esp_timer_create(&audio_tick_timer_args, &audio_tick_timer);
+  esp_timer_start_periodic(audio_tick_timer, EXAMPLE_Audio_TICK_PERIOD_MS * 1000);
+
+  xTaskCreate(play_audio_taskhandle, "PlayAudioTask", 8192, NULL, 5, NULL);
+}
+
+void Audio_Play(String path)
+{
+  _path = path;
 }
 
 uint16_t Audio_VUlevel(void)

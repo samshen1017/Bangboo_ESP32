@@ -17,11 +17,11 @@
 /*-------------------- init --------------------*/
 void TaskList::init(void)
 {
-    this->terminal_init();
-    this->lvgl_init();
     this->sdcard_init();
     this->audio_init();
     this->mic_init();
+    this->lvgl_init();
+    this->terminal_init();
     this->edgeImpulse_init();
     ESP_LOGI("", "System init success.");
 }

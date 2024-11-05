@@ -5,18 +5,17 @@
 
 void Lvgl_BangbooFace(void)
 {
-  LV_IMG_DECLARE(BangbooEyes);
-  lv_obj_t * img;
-
-  img = lv_gif_create(lv_scr_act());
-  lv_gif_set_src(img, &BangbooEyes);
+  lv_obj_t *img = lv_gif_create(lv_scr_act());
+  if (img == NULL)
+  {
+    printf("lvgl gif create failed.");
+    return;
+  }
+  lv_gif_set_src(img, "A:/image/Eous/standby1.gif");
   lv_obj_align(img, LV_ALIGN_CENTER, 0, 0);
-  
 }
 
 void Lvgl_close(void)
 {
-    lv_obj_clean(lv_scr_act());
+  lv_obj_clean(lv_scr_act());
 }
-
-
